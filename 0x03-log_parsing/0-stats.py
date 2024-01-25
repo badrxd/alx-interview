@@ -1,23 +1,17 @@
 #!/usr/bin/python3
 """script that reads stdin line by line and computes metrics"""
 import sys
-# import re
 
 
 def print_fn(status, File_size):
     """ print function"""
 
     print("File size: {}".format(File_size))
-    for key, val in status.items():
-        if val != 0:
+    for key in sorted(status):
+        val = status[key]
+        if val > 0:
             print("{} {}".format(key, val))
 
-
-# ptr = (
-#     r'^\d+\.\d+\.\d+\.\d+ - \[.*\] '
-#     r'"GET \/projects\/\d+ HTTP\/\d.\d" '
-#     r'\d{3} \d+$'
-# )
 
 File_size = 0
 lines = 0
@@ -32,24 +26,20 @@ status = {
     500: 0
 }
 
-
 try:
     for line in sys.stdin:
         lines += 1
-        # match = re.match(ptr, line)
         data = line.split()
-
-        # if match is not None:
-        #     status[int(data[-2])] += 1
-
         try:
-            status[int(data[-2])] += 1
-        except Exception:
+            key = int(data[-2])
+            status[key] += 1
+        except Exception as err:
             pass
 
         try:
-            File_size += int(data[-1])
-        except Exception:
+            file_size = int(data[-1])
+            File_size += file_size
+        except Exception as err:
             pass
 
         if lines % 10 == 0:
