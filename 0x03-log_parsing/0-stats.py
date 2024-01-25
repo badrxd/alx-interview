@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """script that reads stdin line by line and computes metrics"""
 import sys
 
@@ -46,3 +46,4 @@ try:
             print_fn(status_code, File_size)
 finally:
     print_fn(status_code, File_size)
+
