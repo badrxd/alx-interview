@@ -3,19 +3,19 @@
 import sys
 
 
-def print_fn(status, File_size):
+def print_fn(status_code, File_size):
     """ print function"""
 
     print("File size: {}".format(File_size))
-    for key in sorted(status):
-        val = status[key]
+    for key in sorted(status_code):
+        val = status_code[key]
         if val > 0:
             print("{} {}".format(key, val))
 
 
 File_size = 0
 lines = 0
-status = {
+status_code = {
     200: 0,
     301: 0,
     400: 0,
@@ -32,7 +32,7 @@ try:
         data = line.split()
         try:
             key = int(data[-2])
-            status[key] += 1
+            status_code[key] += 1
         except Exception as err:
             pass
 
@@ -43,6 +43,6 @@ try:
             pass
 
         if lines % 10 == 0:
-            print_fn(status, File_size)
+            print_fn(status_code, File_size)
 finally:
-    print_fn(status, File_size)
+    print_fn(status_code, File_size)
