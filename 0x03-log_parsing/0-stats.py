@@ -37,19 +37,18 @@ try:
     for line in sys.stdin:
         lines += 1
         match = re.match(ptr, line)
-        if match is None:
-            continue
 
         data = line.split()
-        status[int(data[-2])] += 1
+        if match is not None:
+            status[int(data[-2])] += 1
 
         try:
             File_size += int(data[-1])
-        except Exception:
+        except Exception as err:
             pass
 
         if lines % 10 == 0:
             print_fn(status, File_size)
     print_fn(status, File_size)
-finally:
+except KeyboardInterrupt:
     print_fn(status, File_size)
