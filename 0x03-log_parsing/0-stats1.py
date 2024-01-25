@@ -36,6 +36,5 @@ try:
 
         if lines % 10 == 0:
             print_fn(status_code, File_size)
-    print_fn(status_code, File_size)
 finally:
     print_fn(status_code, File_size)
