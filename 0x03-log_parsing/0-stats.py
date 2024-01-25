@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """script that reads stdin line by line and computes metrics"""
 import sys
-import re
+# import re
 
 
 def print_fn(status, File_size):
@@ -13,11 +13,11 @@ def print_fn(status, File_size):
             print("{} {}".format(key, val))
 
 
-ptr = (
-    r'^\d+\.\d+\.\d+\.\d+ - \[.*\] '
-    r'"GET \/projects\/\d+ HTTP\/\d.\d" '
-    r'\d{3} \d+$'
-)
+# ptr = (
+#     r'^\d+\.\d+\.\d+\.\d+ - \[.*\] '
+#     r'"GET \/projects\/\d+ HTTP\/\d.\d" '
+#     r'\d{3} \d+$'
+# )
 
 File_size = 0
 lines = 0
@@ -36,7 +36,7 @@ status = {
 try:
     for line in sys.stdin:
         lines += 1
-        match = re.match(ptr, line)
+        # match = re.match(ptr, line)
         data = line.split()
 
         # if match is not None:
