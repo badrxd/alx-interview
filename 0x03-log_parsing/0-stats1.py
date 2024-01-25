@@ -8,8 +8,9 @@ def print_fn(status, File_size):
     """ print function"""
 
     print("File size: {}".format(File_size))
-    for key, val in status.items():
-        if val != 0:
+    for key in sorted(status):
+        val = status[key]
+        if val > 0:
             print("{} {}".format(key, val))
 
 
