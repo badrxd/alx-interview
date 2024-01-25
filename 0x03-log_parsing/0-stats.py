@@ -39,8 +39,13 @@ try:
         match = re.match(ptr, line)
         data = line.split()
 
-        if match is not None:
+        # if match is not None:
+        #     status[int(data[-2])] += 1
+
+        try:
             status[int(data[-2])] += 1
+        except Exception:
+            pass
 
         try:
             File_size += int(data[-1])
