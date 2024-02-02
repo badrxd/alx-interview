@@ -7,26 +7,28 @@ def validUTF8(data):
     represents a valid UTF-8 encoding
     '''
     ln = len(data)
-    bytes = 0
+    _bytes = 0
     if data is None:
         return
     for i in range(ln):
         to_bin = data[i] & 255
-        if bytes == 0:
+        if _bytes == 0:
             if to_bin >> 7 == 0:
-                bytes = 0
+                _bytes = 0
                 continue
             elif to_bin >> 5 == 6:
-                bytes = 1
+                _bytes = 1
             elif to_bin >> 4 == 14:
-                bytes = 2
+                _bytes = 2
             elif to_bin >> 3 == 30:
-                bytes = 3
+                _bytes = 3
             else:
                 return False
         else:
             if to_bin >> 6 != 2:
                 return False
             else:
-                bytes -= 1
+                _bytes -= 1
+        if ln - 1 == i and _bytes > 0:
+            return False
     return True
