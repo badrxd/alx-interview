@@ -8,6 +8,8 @@ def validUTF8(data):
     '''
     ln = len(data)
     bytes = 0
+    if not data or ln == 0:
+        return False
     for i in range(ln):
         to_bin = data[i] & 255
         if bytes == 0:
