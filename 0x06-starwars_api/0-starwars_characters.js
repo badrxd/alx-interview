@@ -24,3 +24,5 @@ async function call () {
     return error;
   }
 }
+
+call();
