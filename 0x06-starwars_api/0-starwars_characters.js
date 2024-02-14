@@ -21,6 +21,6 @@ async function call () {
       console.log(character.name);
     }
   } catch (error) {
-
+    return error
   }
 }
