@@ -13,7 +13,7 @@ def rotate_2d_matrix(matrix):
         for y in range(colum):
             matrix_2[i].append(matrix[y][i])
 
-    matrix = matrix_2
+    matrix[:] = matrix_2[:]
     matrix_2 = None
 
     for i in range(row):
