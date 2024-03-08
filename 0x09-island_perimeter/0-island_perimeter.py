@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-""" Island perim solution"""
+""" Island perimeter solution"""
 
 
-def island_perim(grid):
-    """ island perim function """
-    row = len(grid),
+def island_perimeter(grid):
+    """ island perimeter function """
+    row = len(grid)
     col = len(grid[0])
     perim = 0
+
     for i in range(row):
         for j in range(col):
             if grid[i][j] == 1:
